@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class WelcomeController < ApplicationController
   def index
-    if user_signed_in?
-      redirect_to users_path
-    end
+    return unless user_signed_in?
+
+    redirect_to users_path
   end
 end
