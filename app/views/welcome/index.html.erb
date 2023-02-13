@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center justify-content-center" style="height:100vh">
+  <div class="col-md-4">
+    <h2 class="text-center">Welcome to <%= Rails.application.class.module_parent.to_s %></h2>
+    <div class="form-group text-center">
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+      <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
