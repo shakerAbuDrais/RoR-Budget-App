@@ -1,0 +1,20 @@
+<!-- app/views/categories/index.html.erb -->
+
+<h1>Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Icon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td><%= category.icon %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
