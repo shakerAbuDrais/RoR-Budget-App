@@ -1,3 +1,4 @@
 class Category < ApplicationRecord
-  has_and_belongs_to_many :payments
+  has_many :category_payments
+  has_many :payments, through: :category_payments
 end

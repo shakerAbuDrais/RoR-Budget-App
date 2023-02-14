@@ -1,0 +1,18 @@
+<h1>Transactions for <%= @category.name %></h1>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Amount</th>
+    <th>Description</th>
+  </tr>
+  <% @payments.each do |payment| %>
+    <tr>
+      <td><%= payment.date %></td>
+      <td><%= payment.amount %></td>
+      <td><%= payment.description %></td>
+    </tr>
+  <% end %>
+</table>
+<p>Total Amount: <%= @total_amount %></p>
+<%= link_to "Add a new payment", new_category_payment_path(@category) %>
+<%= link_to "Back", categories_path %>

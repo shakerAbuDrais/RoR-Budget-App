@@ -1,0 +1,14 @@
+<h1>payments for <%= @category.name %></h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+  </tr>
+  <% @payments.each do |payment| %>
+    <tr>
+      <td><%= payment.name %></td>
+      <td><%= payment.amount %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Back to categories", categories_path %>
