@@ -86,4 +86,6 @@ RSpec.configure do |config|
 
   # Include Devise test helpers
   config.include Devise::Test::IntegrationHelpers, type: :system
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
