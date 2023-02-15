@@ -13,7 +13,7 @@ RSpec.describe Payment, type: :model do
       create(:payment, amount: 100)
       create(:payment, amount: 200)
 
-      expect(Payment.last.total_amount).to eq("Total amount is: 300.0")
+      expect(Payment.last.total_amount).to eq('Total amount is: 300.0')
     end
   end
 

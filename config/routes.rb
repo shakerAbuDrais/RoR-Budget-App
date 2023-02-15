@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :users, only: [:index]
   resources :categories do
-  resources :payments, only: [:index, :new, :create, :show]
+    resources :payments, only: %i[index new create show]
   end
 end

@@ -1,17 +1,17 @@
 class CategoriesController < ApplicationController
   def index
-    @title = "Categories"
+    @title = 'Categories'
     @categories = Category.where(user_id: current_user.id)
     @total_amount = Payment.where(category_id: params[:id]).sum(:amount)
-  end  
+  end
 
   def show
     @category = Category.find(params[:id])
     @payments = Payment.where(category_id: @category.id)
-  end  
+  end
 
   def new
-    @title = "New Category"
+    @title = 'New Category'
     @category = Category.new
   end
 
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
     else
       render :new
     end
-  end  
+  end
 
   private
 

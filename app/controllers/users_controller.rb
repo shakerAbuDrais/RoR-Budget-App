@@ -15,6 +15,6 @@ class UsersController < ApplicationController
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:full_name, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[full_name password password_confirmation])
   end
 end

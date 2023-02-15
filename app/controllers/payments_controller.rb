@@ -1,9 +1,9 @@
 class PaymentsController < ApplicationController
   before_action :set_category
-  before_action :set_payment, only: [:show, :edit, :update, :destroy]
+  before_action :set_payment, only: %i[show edit update destroy]
 
   def index
-    @title = "Transactions"
+    @title = 'Transactions'
     @payments = @category.payments.order(created_at: :desc)
     @total_amount = @payments.sum(:amount)
   end
@@ -20,23 +20,22 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     selected_category_ids = params[:payment][:category_ids]
     @payment.category_id = selected_category_ids.first unless selected_category_ids.empty?
-  
+
     puts "this is the payment category id#{@payment.category_id}"
-  
+
     if @payment.save
       selected_category_ids.each do |category_id|
         category = Category.find(category_id)
         category.payments << @payment unless category.payments.include?(@payment)
       end
-  
+
       redirect_to category_payments_path(@payment.category), notice: 'Payment was successfully created.'
     else
       render :new
     end
-  end  
-
-  def edit
   end
+
+  def edit; end
 
   def update
     if @payment.update(payment_params)

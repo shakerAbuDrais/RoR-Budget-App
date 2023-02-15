@@ -11,11 +11,11 @@ RSpec.describe User, type: :model do
   it 'creates a new user with the given password' do
     user = User.new(password: 'password')
     expect(user.password).to eq 'password'
-    end
+  end
   it 'creates a new user with the given id' do
-      user = User.new(id: 1)
-      expect(user.id).to eq 1
-    end
+    user = User.new(id: 1)
+    expect(user.id).to eq 1
+  end
 
   it { should validate_presence_of(:full_name) }
   it { should validate_presence_of(:email) }
