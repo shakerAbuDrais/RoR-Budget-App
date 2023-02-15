@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ClassLength
 # Class: PaymentsController
 class PaymentsController < ApplicationController
   before_action :set_category
