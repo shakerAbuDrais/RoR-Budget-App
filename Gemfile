@@ -69,6 +69,10 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 gem 'bootstrap', '~> 5.1.3'
@@ -76,4 +80,5 @@ gem 'cssbundling-rails', '~> 1.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jsbundling-rails', '~> 1.1'
+gem 'shoulda-matchers'
 gem 'rubocop', '>= 1.0', '< 2.0'
