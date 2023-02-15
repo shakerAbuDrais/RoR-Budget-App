@@ -8,8 +8,8 @@ RSpec.describe Payment, type: :model do
 
   it { should validate_presence_of(:amount) }
 
-  describe "#total_amount" do
-    it "returns the total amount of all payments" do
+  describe '#total_amount' do
+    it 'returns the total amount of all payments' do
       create(:payment, amount: 100)
       create(:payment, amount: 200)
 
@@ -17,8 +17,8 @@ RSpec.describe Payment, type: :model do
     end
   end
 
-  describe ".total_amount_for_category" do
-    it "returns the total amount for a specific category" do
+  describe '.total_amount_for_category' do
+    it 'returns the total amount for a specific category' do
       category = create(:category)
       create(:payment, amount: 100, category: category)
       create(:payment, amount: 200, category: category)
