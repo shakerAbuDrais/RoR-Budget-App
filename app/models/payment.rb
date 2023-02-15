@@ -4,6 +4,8 @@ class Payment < ApplicationRecord
   has_many :category_payments
   has_many :categories, through: :category_payments
 
+  validates :amount, presence: true
+
   def total_amount
     "Total amount is: #{Payment.sum(:amount)}"
   end

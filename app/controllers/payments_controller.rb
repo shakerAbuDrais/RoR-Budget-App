@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
   def index
+    @title = "Transactions"
     @payments = @category.payments.order(created_at: :desc)
     @total_amount = @payments.sum(:amount)
   end
