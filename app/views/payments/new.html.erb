@@ -1,0 +1,18 @@
+<h1>New Payment</h1>
+<%= form_for @payment, url: category_payments_path(@category) do |f| %>
+  <% Category.all.each do |category| %>
+    <%= check_box_tag "payment[category_ids][]", category.id, @payment.category_ids.include?(category.id) %>
+    <%= label_tag "payment_category_ids_#{category.id}", category.name %><br>
+  <% end %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

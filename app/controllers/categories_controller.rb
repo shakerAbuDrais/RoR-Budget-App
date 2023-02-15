@@ -1,14 +1,13 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
-    @total_amount = Payment.sum(:amount)
-    @payments = Payment.order(created_at: :desc)
-  end
+    @categories = Category.where(user_id: current_user.id)
+    @total_amount = Payment.where(category_id: params[:id]).sum(:amount)
+  end  
 
   def show
     @category = Category.find(params[:id])
-    @payments = @category.payments.order(created_at: :desc)
-  end
+    @payments = Payment.where(category_id: @category.id)
+  end  
 
   def new
     @category = Category.new
@@ -16,13 +15,13 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-  
+    @category.user = current_user
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created.'
+      redirect_to root_path, notice: 'Category created successfully!'
     else
       render :new
     end
-  end
+  end  
 
   private
 

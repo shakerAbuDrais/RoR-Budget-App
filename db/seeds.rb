@@ -6,6 +6,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-payment = Payment.create(name: "Transaction 1", amount: 100.0, category_id: Category.first.id)
 category = Category.create(name: "Category 1", icon: "icon_1.png")
-payment.categories << category
+payment1 = Payment.create(name: "Transaction 1", amount: 100.0, category_id: 2)
+payment1.categories << category

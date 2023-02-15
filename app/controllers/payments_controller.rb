@@ -8,6 +8,7 @@ class PaymentsController < ApplicationController
   end
 
   def show
+    @payments = @category.payments.order(created_at: :desc)
   end
 
   def new
@@ -15,21 +16,30 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    @payment = @category.payments.build(payment_params)
-
+    @payment = Payment.new(payment_params)
+    selected_category_ids = params[:payment][:category_ids]
+    @payment.category_id = selected_category_ids.first unless selected_category_ids.empty?
+  
+    puts "this is the payment category id#{@payment.category_id}"
+  
     if @payment.save
-      redirect_to category_payments_path(@category), notice: 'payment was successfully created.'
+      selected_category_ids.each do |category_id|
+        category = Category.find(category_id)
+        category.payments << @payment unless category.payments.include?(@payment)
+      end
+  
+      redirect_to category_payments_path(@payment.category), notice: 'Payment was successfully created.'
     else
       render :new
     end
-  end
+  end  
 
   def edit
   end
 
   def update
     if @payment.update(payment_params)
-      redirect_to category_payments_path(@category), notice: 'payment was successfully updated.'
+      redirect_to category_payments_path(@category), notice: 'Payment was successfully updated.'
     else
       render :edit
     end
@@ -37,19 +47,20 @@ class PaymentsController < ApplicationController
 
   def destroy
     @payment.destroy
-    redirect_to category_payments_path(@category), notice: 'payment was successfully destroyed.'
+    redirect_to category_payments_path(@category), notice: 'Payment was successfully destroyed.'
   end
 
   private
-    def set_category
-      @category = Category.find(params[:category_id])
-    end
 
-    def set_payment
-      @payment = @category.payments.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:category_id])
+  end
 
-    def payment_params
-      params.require(:payment).permit(:amount, :description, :date)
-    end
+  def set_payment
+    @payment = Payment.find(params[:id])
+  end
+
+  def payment_params
+    params.require(:payment).permit(:name, :amount, category_ids: [])
+  end
 end
