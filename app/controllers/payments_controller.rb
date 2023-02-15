@@ -1,3 +1,4 @@
+# Class: PaymentsController
 class PaymentsController < ApplicationController
   before_action :set_category
   before_action :set_payment, only: %i[show edit update destroy]
@@ -20,15 +21,11 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     selected_category_ids = params[:payment][:category_ids]
     @payment.category_id = selected_category_ids.first unless selected_category_ids.empty?
-
-    puts "this is the payment category id#{@payment.category_id}"
-
     if @payment.save
       selected_category_ids.each do |category_id|
         category = Category.find(category_id)
         category.payments << @payment unless category.payments.include?(@payment)
       end
-
       redirect_to category_payments_path(@payment.category), notice: 'Payment was successfully created.'
     else
       render :new

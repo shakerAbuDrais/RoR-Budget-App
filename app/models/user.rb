@@ -1,3 +1,4 @@
+# Purpose: User model for authentication and authorization
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

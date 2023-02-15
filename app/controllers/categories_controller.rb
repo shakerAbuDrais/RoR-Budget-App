@@ -1,3 +1,4 @@
+# This controller is responsible for handling the categories
 class CategoriesController < ApplicationController
   def index
     @title = 'Categories'
