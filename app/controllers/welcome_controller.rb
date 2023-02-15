@@ -1,7 +1,8 @@
+# Class: WelcomeController
 class WelcomeController < ApplicationController
   def index
     return unless user_signed_in?
 
-    redirect_to users_path
+    redirect_to categories_path
   end
 end

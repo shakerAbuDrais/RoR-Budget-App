@@ -67,6 +67,9 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
@@ -76,4 +79,6 @@ gem 'cssbundling-rails', '~> 1.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'jsbundling-rails', '~> 1.1'
+gem 'rails-controller-testing'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'shoulda-matchers'

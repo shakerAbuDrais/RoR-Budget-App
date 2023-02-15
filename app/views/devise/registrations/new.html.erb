@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-center" style="height:100vh">
   <div class="col-md-4">
     <h2 class="text-center">Sign up</h2>
-    <%= form_for(resource, as: resource_name, url: user_session_path, class: "form-horizontal") do |f| %>
+    <%= form_for(resource, as: resource_name, url: users_path, class: "form-horizontal") do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="form-group">
         <%= f.label :full_name, class: "control-label" %>
@@ -20,7 +20,7 @@
       </div>
       <div class="form-group">
         <%= f.label :password_confirmation, class: "control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" required: true %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", required: true %>
       </div>
       <div class="form-group text-center">
         <%= f.submit "Sign up", class: "btn btn-primary" %>

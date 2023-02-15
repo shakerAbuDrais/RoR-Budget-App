@@ -1,0 +1,24 @@
+<div class="container-fluid bg-light">
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-10 col-12 mt-5 p-4 bg-white rounded">
+      <h1 class="text-center mb-4">New Payment</h1>
+      <%= form_for @payment, url: category_payments_path(@category) do |f| %>
+        <% Category.all.each do |category| %>
+          <%= check_box_tag "payment[category_ids][]", category.id, @payment.category_ids.include?(category.id) %>
+          <%= label_tag "payment_category_ids_#{category.id}", category.name %><br>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :amount %>
+          <%= f.text_field :amount, class: "form-control" %>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
