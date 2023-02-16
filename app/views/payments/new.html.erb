@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-sm-10 col-12 mt-5 p-4 bg-white rounded">
       <h1 class="text-center mb-4">New Payment</h1>
-      <%= form_for @payment, url: category_payment_path(@category) do |f| %>
+      <%= form_for @payment, url: category_payments_path(@category) do |f| %>
         <% current_user.categories.each do |category| %>
           <%= check_box_tag "payment[category_ids][]", category.id, @payment.category_ids.include?(category.id) %>
           <%= label_tag "payment_category_ids_#{category.id}", category.name %><br>
