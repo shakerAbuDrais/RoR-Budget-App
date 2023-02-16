@@ -6,10 +6,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-
-namespace :heroku do
-  desc "Run database migrations on Heroku"
-  task migrate: :environment do
-    system "heroku run rake db:migrate"
-  end
-end

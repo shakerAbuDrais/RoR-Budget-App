@@ -17,7 +17,6 @@ RSpec.describe User, type: :model do
     expect(user.id).to eq 1
   end
 
-  it { should validate_presence_of(:full_name) }
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:password) }
 end

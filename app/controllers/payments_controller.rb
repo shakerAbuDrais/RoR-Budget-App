@@ -11,15 +11,18 @@ class PaymentsController < ApplicationController
   end
 
   def show
+    @title = 'Transactions'
     @payments = @category.payments.order(created_at: :desc)
   end
 
   def new
+    @title = 'Add New Transaction'
     @payment = @category.payments.build
   end
 
   def create
     @payment = Payment.new(payment_params)
+    @payment.user = current_user
     selected_category_ids = params[:payment][:category_ids]
     @payment.category_id = selected_category_ids.first unless selected_category_ids.empty?
     if @payment.save

@@ -7,12 +7,13 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @title = 'Transactions'
     @category = Category.find(params[:id])
     @payments = Payment.where(category_id: @category.id)
   end
 
   def new
-    @title = 'New Category'
+    @title = 'Add New Category'
     @category = Category.new
   end
 
