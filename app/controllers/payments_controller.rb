@@ -11,10 +11,12 @@ class PaymentsController < ApplicationController
   end
 
   def show
+    @title = 'Transactions'
     @payments = @category.payments.order(created_at: :desc)
   end
 
   def new
+    @title = 'Add New Transaction'
     @payment = @category.payments.build
   end
 
