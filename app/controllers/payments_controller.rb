@@ -23,9 +23,13 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     @payment.user = current_user
-    selected_category_ids = params[:payment][:category_ids]
+    selected_category_ids = params[:payment]&.fetch(:category_ids, []) || []
     @payment.category_id = selected_category_ids.first unless selected_category_ids.empty?
-    if @payment.save
+
+    if selected_category_ids.empty?
+      flash.now[:alert] = "Please select at least one category"
+      render :new
+    elsif @payment.save
       selected_category_ids.each do |category_id|
         category = Category.find(category_id)
         category.payments << @payment unless category.payments.include?(@payment)
